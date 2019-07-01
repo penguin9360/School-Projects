@@ -1,0 +1,20 @@
+{:title "Initial Lab"
+ :slug "initial-lab"
+ :dir "initial"
+ :uri "git@bitbucket.org:mattoxbeckman/clojure-initial-lab.git"
+ :active true
+ :start "2015-02-06 18:00:00"
+ :stop  "2015-02-14 23:59:59"
+
+ :scenarios [ {:kind "working" :branch "master" :slug "working" :title "Test student code vs instructor tests" :points 45}
+              {:kind "qualifying" :branch "master" :slug "qualifying" :title "Test student tests vs instructor code" :points 5}
+              {:kind "broken" :branch "broke-1" :slug "broke-1" :title "Plus only takes two arguments." :points 5}
+              {:kind "broken" :branch "broke-2" :slug "broke-2" :title "Plus only looks at first argument." :points 5}
+              {:kind "broken" :branch "broke-3" :slug "broke-3" :title "Socialist plus doesn't tax." :points 5}
+              {:kind "broken" :branch "broke-4" :slug "broke-4" :title "Socialist plus doesn't subsidize." :points 5}
+              {:kind "broken" :branch "broke-5" :slug "broke-5" :title "Capitalist plus doesn't tax." :points 5}
+              {:kind "broken" :branch "broke-6" :slug "broke-6" :title "Capitalist plus doesn't subsidize." :points 5}
+              {:kind "broken" :branch "broke-7" :slug "broke-7" :title "Communist plus returns something other than 10." :points 5}
+              {:kind "broken" :branch "broke-8" :slug "broke-8" :title "Political extreemist plus adds instead of multiplying." :points 5}
+              {:kind "broken" :branch "broke-9" :slug "broke-9" :title "Political extreemist plus only takes two arguments." :points 5}
+              {:kind "broken" :branch "broke-10" :slug "broke-10" :title "Political extreemist plus only returns first argument." :points 5}]}

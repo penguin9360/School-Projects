@@ -1,0 +1,16 @@
+Grades for version committed on time
+	rule1: 75.0 / 75
+			*Passed test: rule1(board1)
+			*Passed test: rule1(board2)
+			*Passed test: rule1("board3")
+			*Passed test: rule1("board4")
+			*Passed test: rule1("board5")
+			*Passed test: rule1("board6")
+			*Passed test: rule1("board7")
+			*Passed test: rule1("board8")
+			*Passed test: rule1("board9")
+			*Passed test: rule1("board10")
+		
+Total: 75.0 / 75
+
+Final Score: 75.0 / 75

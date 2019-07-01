@@ -1,0 +1,33 @@
+Grades for version committed on time
+	decoder: 20.0 / 20
+			*Passed test: invalid (opcode = 20 funct = 20 zero = 0)
+			*Passed test: add (opcode = 00 funct = 20 zero = 0)
+			*Passed test: addi (opcode = 08 funct = 20 zero = 0)
+			*Passed test: sub (opcode = 00 funct = 22 zero = 0)
+			*Passed test: invalid (opcode = 22 funct = 22 zero = 0)
+			*Passed test: and (opcode = 00 funct = 24 zero = 0)
+			*Passed test: andi (opcode = 0c funct = 24 zero = 0)
+			*Passed test: or (opcode = 00 funct = 25 zero = 0)
+			*Passed test: ori (opcode = 0d funct = 25 zero = 0)
+			*Passed test: invalid (opcode = 25 funct = 25 zero = 0)
+			*Passed test: nor (opcode = 00 funct = 27 zero = 0)
+			*Passed test: invalid (opcode = 27 funct = 27 zero = 0)
+			*Passed test: xor (opcode = 00 funct = 26 zero = 0)
+			*Passed test: invalid (opcode = 26 funct = 26 zero = 0)
+			*Passed test: xori (opcode = 0e funct = 26 zero = 0)
+			*Passed test: not taken bne (opcode = 05 funct = 26 zero = 1)
+			*Passed test: taken bne (opcode = 05 funct = 26 zero = 0)
+			*Passed test: not taken beq (opcode = 04 funct = 26 zero = 0)
+			*Passed test: taken beq (opcode = 04 funct = 26 zero = 1)
+			*Passed test: j (opcode = 02 funct = 26 zero = 1)
+			*Passed test: jr (opcode = 00 funct = 08 zero = 1)
+			*Passed test: lui (opcode = 0f funct = 08 zero = 1)
+			*Passed test: slt (opcode = 00 funct = 2a zero = 1)
+			*Passed test: lw (opcode = 23 funct = 2a zero = 1)
+			*Passed test: lbu (opcode = 24 funct = 2a zero = 1)
+			*Passed test: sw (opcode = 2b funct = 2a zero = 1)
+			*Passed test: sb (opcode = 28 funct = 2a zero = 1)
+		
+Total: 20.0 / 20
+
+Final Score: 20.0 / 20

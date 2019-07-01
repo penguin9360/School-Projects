@@ -1,0 +1,35 @@
+Grades for version committed on time
+	full machine: 85.0 / 80
+			*Passed test: add
+			*Passed test: sub
+			*Passed test: and
+			*Passed test: or
+			*Passed test: nor
+			*Passed test: xor
+			*Passed test: addi
+			*Passed test: andi
+			*Passed test: ori
+			*Passed test: xori
+			*Passed test: lui
+			*Passed test: slt less than
+			*Passed test: slt equal
+			*Passed test: slt greater than
+			*Passed test: lbu
+			*Passed test: lbu
+			*Passed test: lbu
+			*Passed test: lbu
+			*Passed test: lw
+			*Passed test: sb
+			*Passed test: slt extra credit greater than
+			*Passed test: slt extra credit less than
+			*Passed test: j
+			*Passed test: jr
+			*Passed test: beq taken
+			*Passed test: beq not taken
+			*Passed test: bne taken
+			*Passed test: bne not taken
+			*Passed test: addm
+		
+Total: 85.0 / 80
+
+Final Score: 85.0 / 80

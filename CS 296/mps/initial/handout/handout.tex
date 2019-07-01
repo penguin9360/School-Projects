@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper,margin=0.5in]{geometry}
+
+\usepackage{titlesec}
+\usepackage{xltxtra,fontspec,xunicode}
+
+\usepackage{minted}
+
+\usemintedstyle{trac}
+
+\defaultfontfeatures{Ligatures={TeX}}
+\newfontfamily\mytitlefont{Concourse T3}
+\newfontfamily\titlesc{Concourse C3}
+\newfontfamily\mytextfont{Equity Text A}
+\newfontfamily\mysc{Equity Caps A}
+%\setmonofont[Scale=0.86]{Inconsolata}
+
+\titleformat{\chapter}{\mytitlefont\huge}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}{\mytitlefont\Large}{\thesection}{1em}{}
+\titleformat{\subsection}{\mytitlefont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\mytitlefont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]{\mytextfont\normalsize\bfseries}{\theparagraph}{1em}{}
+
+\newminted{clojure}{linenos,numbersep=4pt}
+\def\clojure{{\mysc Clojure}}
+
+\begin{document}
+
+\def\title{Initial \clojure~ Homework}
+
+\hrule
+
+\mytitlefont
+
+\begin{center}
+\begin{Large}
+CS 296-25 --- \title
+\end{Large}
+\end{center}
+
+\mytextfont
+
+\hrule
+
+\vskip 1em
+
+\section{Introduction and Learning Objectives}
+
+\begin{enumerate}
+   \item Ensure that you can start {\clojure.}
+   \item Use git operations to retrieve your MP.
+   \item Use midje to write tests.
+   \item Have fun playing with \clojure.
+\end{enumerate}
+
+\section{Getting Started}
+
+\subsection{Get a command line environment}
+
+The first thing you need to do is to have a working development environment.
+There are a few ways you can accomplish that:
+\begin{itemize}
+\item Use the provided Vagrant box.
+\item Install \texttt{lein} on the EWS.
+\item Use your own computer running OS X or Linux
+\item Use of the editors that can connect to \clojure.
+\end{itemize}
+
+For these instructions, we are going to work with \texttt{lein}.
+If you have a different setup, feel free to ignore this.
+
+If you are not familiar with Linux, please go through the Linux Command-line
+Guide, which will be posted on the course web site.
+
+\subsection{Get \clojure}
+
+Once you have a command line environment running, you need to be sure that
+\clojure~is installed.  If you are unsure if you have it or not, type
+
+\texttt{lein repl}
+
+and you should see something like this:
+
+\begin{verbatim}
+vagrant% lein repl
+nREPL server started on port 58594 on host 127.0.0.1 - nrepl://127.0.0.1:58594
+REPL-y 0.3.5, nREPL 0.2.6
+Clojure 1.6.0
+OpenJDK 64-Bit Server VM 1.7.0_71-b14
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=> 
+\end{verbatim}
+
+The numbers may be different.  Hit control-D to exit.
+
+\subsection{Clone your repository}
+
+The linux account guide contains a chapter on Git.  You will want to look at that, or
+the tutorial that is on bitbucket.
+
+In your repository you will find the directory \texttt{initial}.
+
+In the \texttt{initial} directory you will see the following folders:
+
+\begin{itemize}
+\item \texttt{handout} --- this contains ths file \texttt{handout.tex}, which is the \LaTeX\ source
+  for the current document.
+\item \texttt{src/initial} --- contains the file \texttt{core.clj}, which contains the
+  running code for the lab.
+\item \texttt{test/initial} --- contains the file \texttt{t\_test.clj}, which
+  contains the test cases for the lab.
+\end{itemize}
+
+\section{Given Code}
+
+\subsection{The \texttt{initial} Namespace}
+
+At the beginning of \texttt{core.clj}, you will see these lines:
+
+\begin{clojurecode}
+(ns initial.core)
+\end{clojurecode}
+
+This creates a namespace for your code.  We will talk about that more later, but for now you can
+ignore it.
+
+You need to write four functions.  Since this is just practice for getting everything working, we'll
+have some fun and write politically active arithmetic functions.
+
+\begin{itemize}
+   \item \texttt{plus} --- This just adds integers together.  We wrote this one for you, actually, so it's even
+      easier than it sounds.  This is the apathetic citizen who can't be bothered to vote.
+   \item \texttt{socialist-plus} ---  People with more numbers to add should pay their fair share to help out
+      people with fewer numbers.  The \texttt{socialist-plus} function adds one to sums with fewer than two
+      numbers, and subtracts one for each number after the first 2.  See the given code for examples.
+   \item \texttt{capitalist-plus} ---  People with more numbers are better than people with fewer numbers, and
+      mathematical policy should reflect that.  After all, it takes numbers to make numbers.
+      The \texttt{capitalist-plus} function subtracts one to sums with fewer than two
+      numbers, and adds one for each number after the first 2.  See the given code for examples.
+   \item \texttt{communist-plus} --- Everyone should be equal, no matter how many numbers they have.  The state
+      will give you the numbers you need.  All sums come out to 10.
+   \item \texttt{political-extremist-plus} --- Political extremists don't do anything in moderation.  They
+      multiply instead of adding.  You get to decide which political group would use this function. \verb|:-)|
+
+\end{itemize}
+
+\subsection{Running the Code}
+
+If you want to run the code from the command line using \texttt{lein}, you can
+do that as follows:
+
+\begin{verbatim}
+% lein repl
+user=> (require 'initial.core)
+nil
+user=> (use 'initial.core)
+nil
+user=> (socialist-plus 10 10 10 10)
+38
+user=> (plus 10 20 30)
+60
+\end{verbatim}
+
+Note that the \verb|%| and \verb|user=>| strings are prompts.
+Do not try typing them in.
+
+\subsection{Test Cases}
+
+The file \texttt{test/initial/t\_core.clj} contains testing code.
+It uses a testing framework called \texttt{midje}.  You will not
+write any test cases for this MP, but in the future you will, so
+do take a look to get an idea how they are written.
+
+To run the test cases, run \texttt{lein midje}.
+
+\section{Your Work}
+
+Your job now is to write the functions and pass the test cases.
+There will be an autograder that will start up in a few days.
+All MPs are due one week from when the grading script is started,
+rounded up to the next midnight.
+
+\end{document}

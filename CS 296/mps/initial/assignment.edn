@@ -1,0 +1,9 @@
+{:rubric "cs331"
+  :slug "initial-lab"
+  :title "Initial Lab"
+  :given "2014-09-12"
+  :due "2013-09-19"
+  :kind "L"
+  :category "labs"
+  :max 100
+  :order 11}

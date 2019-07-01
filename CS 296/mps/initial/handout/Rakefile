@@ -1,0 +1,3 @@
+import '../../../rakefiles/handout.rake'
+
+$slug='initial-lab'

@@ -1,0 +1,66 @@
+Grades for version committed on time
+	alu1: 20.0 / 20.0
+			*Passed test: A = 0 B = 0 carryin = 0 control = 010
+			*Passed test: A = 0 B = 0 carryin = 1 control = 010
+			*Passed test: A = 0 B = 1 carryin = 0 control = 010
+			*Passed test: A = 0 B = 1 carryin = 1 control = 010
+			*Passed test: A = 1 B = 0 carryin = 0 control = 010
+			*Passed test: A = 1 B = 0 carryin = 1 control = 010
+			*Passed test: A = 1 B = 1 carryin = 0 control = 010
+			*Passed test: A = 1 B = 1 carryin = 1 control = 010
+			*Passed test: A = 0 B = 0 carryin = 0 control = 011
+			*Passed test: A = 0 B = 0 carryin = 1 control = 011
+			*Passed test: A = 0 B = 1 carryin = 0 control = 011
+			*Passed test: A = 0 B = 1 carryin = 1 control = 011
+			*Passed test: A = 1 B = 0 carryin = 0 control = 011
+			*Passed test: A = 1 B = 0 carryin = 1 control = 011
+			*Passed test: A = 1 B = 1 carryin = 0 control = 011
+			*Passed test: A = 1 B = 1 carryin = 1 control = 011
+			*Passed test: A = 0 B = 0 carryin = 0 control = 100
+			*Passed test: A = 0 B = 0 carryin = 1 control = 100
+			*Passed test: A = 0 B = 1 carryin = 0 control = 100
+			*Passed test: A = 0 B = 1 carryin = 1 control = 100
+			*Passed test: A = 1 B = 0 carryin = 0 control = 100
+			*Passed test: A = 1 B = 0 carryin = 1 control = 100
+			*Passed test: A = 1 B = 1 carryin = 0 control = 100
+			*Passed test: A = 1 B = 1 carryin = 1 control = 100
+			*Passed test: A = 0 B = 0 carryin = 0 control = 101
+			*Passed test: A = 0 B = 0 carryin = 1 control = 101
+			*Passed test: A = 0 B = 1 carryin = 0 control = 101
+			*Passed test: A = 0 B = 1 carryin = 1 control = 101
+			*Passed test: A = 1 B = 0 carryin = 0 control = 101
+			*Passed test: A = 1 B = 0 carryin = 1 control = 101
+			*Passed test: A = 1 B = 1 carryin = 0 control = 101
+			*Passed test: A = 1 B = 1 carryin = 1 control = 101
+			*Passed test: A = 0 B = 0 carryin = 0 control = 110
+			*Passed test: A = 0 B = 0 carryin = 1 control = 110
+			*Passed test: A = 0 B = 1 carryin = 0 control = 110
+			*Passed test: A = 0 B = 1 carryin = 1 control = 110
+			*Passed test: A = 1 B = 0 carryin = 0 control = 110
+			*Passed test: A = 1 B = 0 carryin = 1 control = 110
+			*Passed test: A = 1 B = 1 carryin = 0 control = 110
+			*Passed test: A = 1 B = 1 carryin = 1 control = 110
+			*Passed test: A = 0 B = 0 carryin = 0 control = 111
+			*Passed test: A = 0 B = 0 carryin = 1 control = 111
+			*Passed test: A = 0 B = 1 carryin = 0 control = 111
+			*Passed test: A = 0 B = 1 carryin = 1 control = 111
+			*Passed test: A = 1 B = 0 carryin = 0 control = 111
+			*Passed test: A = 1 B = 0 carryin = 1 control = 111
+			*Passed test: A = 1 B = 1 carryin = 0 control = 111
+			*Passed test: A = 1 B = 1 carryin = 1 control = 111
+		
+	alu32: 60.0 / 60.0
+			*Passed test: zero flag     0x00000000 + 0x00000000
+			*Passed test: add           0x22222222 + 0x11111111  = 0x33333333
+			*Passed test: sub           0x22222222 - 0x11111111  = 0x11111111
+			*Passed test: and           0xf0ca9653 & 0x12345678  = 0x10001650
+			*Passed test: or            0xf0ca9653 | 0xfedcba98  = 0xfedebedb
+			*Passed test: nor         ~(0xf0ca9653 | 0x12345678) = 0x0d012984
+			*Passed test: xor           0xf0ca9653 ^ 0xfedcba98  = 0x0e162ccb
+			*Passed test: overflow flag 0x7fffffff + 0x00000001
+			*Passed test: overflow flag 0x80000000 - 0x00000001
+			*Passed test: negative flag 0xffffffff + 0xffffffff
+		
+Total: 80.0 / 80.0
+
+Final Score: 80.0 / 80.0

@@ -1,0 +1,129 @@
+$date
+	Thu Aug 30 14:39:55 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module sc2_test $end
+$var wire 1 ! s $end
+$var wire 1 " c_out $end
+$var reg 1 # a_in $end
+$var reg 1 $ b_in $end
+$var reg 1 % cin_in $end
+$scope module sc2 $end
+$var wire 1 # a $end
+$var wire 1 $ b $end
+$var wire 1 % cin $end
+$var wire 1 " cout $end
+$var wire 1 & w3 $end
+$var wire 1 ' w2 $end
+$var wire 1 ( w1 $end
+$var wire 1 ! s $end
+$scope module t1 $end
+$var wire 1 # a $end
+$var wire 1 $ b $end
+$var wire 1 ' c $end
+$var wire 1 ) not_a $end
+$var wire 1 * not_b $end
+$var wire 1 ( s $end
+$var wire 1 + w1 $end
+$var wire 1 , w2 $end
+$upscope $end
+$scope module t2 $end
+$var wire 1 ( a $end
+$var wire 1 % b $end
+$var wire 1 & c $end
+$var wire 1 - not_a $end
+$var wire 1 . not_b $end
+$var wire 1 ! s $end
+$var wire 1 / w1 $end
+$var wire 1 0 w2 $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+00
+0/
+1.
+1-
+0,
+0+
+1*
+1)
+0(
+0'
+0&
+0%
+0$
+0#
+0"
+0!
+$end
+#10
+1!
+0.
+10
+1%
+#20
+0-
+1/
+1!
+1(
+1.
+00
+0*
+1,
+0%
+1$
+#30
+0!
+1"
+0/
+1&
+0.
+1%
+#40
+1!
+1/
+0-
+0"
+1+
+1(
+0&
+1.
+1*
+0,
+0)
+0%
+0$
+1#
+#50
+0!
+1"
+0/
+1&
+0.
+1%
+#60
+1-
+0!
+0(
+0/
+0+
+0&
+1.
+1'
+0*
+0%
+1$
+#70
+1!
+0.
+10
+1%
+#80
