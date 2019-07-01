@@ -1,0 +1,7 @@
+.gradle
+!gradle-wrapper.jar
+/bin/
+/build/
+/test-output/
+*.swp
+*.swo

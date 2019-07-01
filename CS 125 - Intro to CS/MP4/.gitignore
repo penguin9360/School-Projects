@@ -1,0 +1,15 @@
+!gradle-wrapper.jar
+/.gradle
+/.vertx
+.idea/modules/test-output/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/.name
+/out/
+/build/
+/test-output/
+/file-uploads/
+/node_modules/
+*.class
+*.swp
+*.swo

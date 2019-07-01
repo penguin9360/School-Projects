@@ -1,0 +1,139 @@
+name: "MP3"
+version: 1.0.0
+grading:
+  timeout: PT5M
+  run: "./gradlew grade -Pgrade.capture -Pgrade.secure -Pgrade.reporting.file={{ gradeFile }}"
+  ignoreOutput:
+    - "^java.security.policy: error parsing file.*"
+    - "^Unable to initialize policy entry:.*"
+    - "^.*?expected \\[\\;\\], found \\[priority\\]$"
+    - "^WARNING: An illegal reflective access operation has occurred.*"
+    - "^WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass.*"
+    - "^WARNING: Please consider reporting this to the maintainers.*"
+    - "^WARNING: Use --illegal-access=warn to enable warnings.*"
+    - "^WARNING: All illegal access operations will be denied in a future release.*"
+    - "^The TaskInternal.*"
+scoring:
+  max: 100
+  selectors:
+    - checkstyle
+    - test
+vcs:
+  git: true
+students:
+  location: email.txt
+  require: true
+  count: 1
+  suffix: "@illinois.edu"
+files:
+  - compile:
+    - "ConnectN.java"
+    - "Player.java"
+    test: ConnectN
+secure: config/security.policy
+reporting:
+  post: "https://cs125-reporting.cs.illinois.edu/progress"
+notes:
+  "Note that the maximum local grade is 90/100. 10 points will be provided
+  during official grading if you have committed code that earns at least 40
+  points by Friday 2/16/2018 at 5PM."
+checkstyle:
+  name: "checkstyle Tests"
+  missing:
+    score: 0
+    message: "checkstyle failed to run"
+    name: "checkstyle"
+  selectors:
+    - selector: "count(//file/error) = 0"
+      score: 10
+      message: "No checkstyle errors were reported"
+      name: "checkstyle"
+    - selector: "count(//file/error) > 0"
+      score: 0
+      message: "checkstyle errors were reported"
+      name: "checkstyle"
+test:
+  name: "testNG Tests"
+  selectors:
+    - selector: "count(//testcase[@name='testTitle']) = 1 and count(//testcase[@name='testTitle']//failure) > 0"
+      score: 0
+      message: "testTitle failed"
+      name: "testTitle"
+    - selector: "count(//testcase[@name='testTitle']) = 1 and count(//testcase[@name='testTitle']//failure) = 0"
+      score: 5
+      message: "testTitle succeeded"
+      name: "testTitle"
+    - selector: "count(//testcase[@name='testGetAndSetWidth']) = 1 and count(//testcase[@name='testGetAndSetWidth']//failure) > 0"
+      score: 0
+      message: "testGetAndSetWidth failed"
+      name: "testGetAndSetWidth"
+    - selector: "count(//testcase[@name='testGetAndSetWidth']) = 1 and count(//testcase[@name='testGetAndSetWidth']//failure) = 0"
+      score: 5
+      message: "testGetAndSetWidth succeeded"
+      name: "testGetAndSetWidth"
+    - selector: "count(//testcase[@name='testGetAndSetHeight']) = 1 and count(//testcase[@name='testGetAndSetHeight']//failure) > 0"
+      score: 0
+      message: "testGetAndSetHeight failed"
+      name: "testGetAndSetHeight"
+    - selector: "count(//testcase[@name='testGetAndSetHeight']) = 1 and count(//testcase[@name='testGetAndSetHeight']//failure) = 0"
+      score: 5
+      message: "testGetAndSetHeight succeeded"
+      name: "testGetAndSetHeight"
+    - selector: "count(//testcase[@name='testGetAndSetN']) = 1 and count(//testcase[@name='testGetAndSetN']//failure) > 0"
+      score: 0
+      message: "testGetAndSetN failed"
+      name: "testGetAndSetN"
+    - selector: "count(//testcase[@name='testGetAndSetN']) = 1 and count(//testcase[@name='testGetAndSetN']//failure) = 0"
+      score: 5
+      message: "testGetAndSetN succeeded"
+      name: "testGetAndSetN"
+    - selector: "count(//testcase[@name='testConstructors']) = 1 and count(//testcase[@name='testConstructors']//failure) > 0"
+      score: 0
+      message: "testConstructors failed"
+      name: "testConstructors"
+    - selector: "count(//testcase[@name='testConstructors']) = 1 and count(//testcase[@name='testConstructors']//failure) = 0"
+      score: 10
+      message: "testConstructors succeeded"
+      name: "testConstructors"
+    - selector: "count(//testcase[@name='testGetAndSetBoard']) = 1 and count(//testcase[@name='testGetAndSetBoard']//failure) > 0"
+      score: 0
+      message: "testGetAndSetBoard failed"
+      name: "testGetAndSetBoard"
+    - selector: "count(//testcase[@name='testGetAndSetBoard']) = 1 and count(//testcase[@name='testGetAndSetBoard']//failure) = 0"
+      score: 15
+      message: "testGetAndSetBoard succeeded"
+      name: "testGetAndSetBoard"
+    - selector: "count(//testcase[@name='testWinner']) = 1 and count(//testcase[@name='testWinner']//failure) > 0"
+      score: 0
+      message: "testWinner failed"
+      name: "testWinner"
+    - selector: "count(//testcase[@name='testWinner']) = 1 and count(//testcase[@name='testWinner']//failure) = 0"
+      score: 10
+      message: "testWinner succeeded"
+      name: "testWinner"
+    - selector: "count(//testcase[@name='testEquals']) = 1 and count(//testcase[@name='testEquals']//failure) > 0"
+      score: 0
+      message: "testEquals failed"
+      name: "testEquals"
+    - selector: "count(//testcase[@name='testEquals']) = 1 and count(//testcase[@name='testEquals']//failure) = 0"
+      score: 10
+      message: "testEquals succeeded"
+      name: "testEquals"
+    - selector: "count(//testcase[@name='testStaticMethods']) = 1 and count(//testcase[@name='testStaticMethods']//failure) > 0"
+      score: 0
+      message: "testStaticMethods failed"
+      name: "testStaticMethods"
+    - selector: "count(//testcase[@name='testStaticMethods']) = 1 and count(//testcase[@name='testStaticMethods']//failure) = 0"
+      score: 10
+      message: "testStaticMethods succeeded"
+      name: "testStaticMethods"
+    - selector: "count(//testcase[@name='testGameCount']) = 1 and count(//testcase[@name='testGameCount']//failure) > 0"
+      score: 0
+      message: "testGameCount failed"
+      name: "testGameCount"
+    - selector: "count(//testcase[@name='testGameCount']) = 1 and count(//testcase[@name='testGameCount']//failure) = 0"
+      score: 5
+      message: "testGameCount succeeded"
+      name: "testGameCount"
+
+# vim: ts=2:sw=2:et

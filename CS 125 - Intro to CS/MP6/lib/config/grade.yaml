@@ -1,0 +1,114 @@
+name: "MP6"
+version: 1.0.0
+package: "edu.illinois.cs.cs125.mp6.lib"
+grading:
+  timeout: PT5M
+  run: "./gradlew lib:grade -c settings.gradle.grade -Pgrade.capture -Pgrade.secure -Pgrade.reporting.file={{ gradeFile }}"
+  ignoreOutput:
+    - "^java.security.policy: error parsing file.*"
+    - "^Unable to initialize policy entry:.*"
+    - "^.*?expected \\[\\;\\], found \\[priority\\]$"
+    - "^WARNING: An illegal reflective access operation has occurred.*"
+    - "^WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass.*"
+    - "^WARNING: Please consider reporting this to the maintainers.*"
+    - "^WARNING: Use --illegal-access=warn to enable warnings.*"
+    - "^WARNING: All illegal access operations will be denied in a future release.*"
+    - "^The TaskInternal.*"
+scoring:
+  max: 100
+  selectors:
+    - checkstyle
+    - test
+vcs:
+  git: true
+students:
+  location: email.txt
+  require: true
+  count: 1
+  suffix: "@illinois.edu"
+files:
+  - "RecognizePhoto"
+secure: config/security.policy
+reporting:
+  post: "https://cs125-reporting.cs.illinois.edu/progress"
+notes:
+  "Note that the maximum local grade is 80/100. 10 points will be provided
+  during official grading if you have committed code that earns at least 40
+  points by Wednesday 4/11/2018 at 5PM. 10 points are for correctly completing
+  isRick, which are not providing test cases for."
+checkstyle:
+  name: "checkstyle Tests"
+  missing:
+    score: 0
+    message: "checkstyle failed to run"
+    name: "checkstyle"
+  selectors:
+    - selector: "count(//file/error) = 0"
+      score: 10
+      message: "No checkstyle errors were reported"
+      name: "checkstyle"
+    - selector: "count(//file/error) > 0"
+      score: 0
+      message: "checkstyle errors were reported"
+      name: "checkstyle"
+test:
+  name: "testNG Tests"
+  selectors:
+    - selector: "count(//testsuite[@name='edu.illinois.cs.cs125.mp6.lib.RecognizePhotoTest']) = 0"
+      score: 0
+      message: "RecognizePhotoTest didn't compile"
+      name: "RecognizePhotoTest"
+    - selector: "count(//testsuite[@name='edu.illinois.cs.cs125.mp6.lib.RecognizePhotoTest']) > 0"
+      score: 10
+      message: "RecognizePhotoTest compiled"
+      name: "RecognizePhotoTest"
+    - selector: "count(//testcase[@name='testWidth']) = 1 and count(//testcase[@name='testWidth']//failure) = 0"
+      score: 10
+      message: "testWidth succeeded"
+      name: "testWidth"
+    - selector: "count(//testcase[@name='testWidth']) = 1 and count(//testcase[@name='testWidth']//failure) > 0"
+      score: 0
+      message: "testWidth failed"
+      name: "testWidth"
+    - selector: "count(//testcase[@name='testHeight']) = 1 and count(//testcase[@name='testHeight']//failure) = 0"
+      score: 10
+      message: "testHeight succeeded"
+      name: "testHeight"
+    - selector: "count(//testcase[@name='testHeight']) = 1 and count(//testcase[@name='testHeight']//failure) > 0"
+      score: 0
+      message: "testHeight failed"
+      name: "testHeight"
+    - selector: "count(//testcase[@name='testFormat']) = 1 and count(//testcase[@name='testFormat']//failure) = 0"
+      score: 10
+      message: "testFormat succeeded"
+      name: "testFormat"
+    - selector: "count(//testcase[@name='testFormat']) = 1 and count(//testcase[@name='testFormat']//failure) > 0"
+      score: 0
+      message: "testFormat failed"
+      name: "testFormat"
+    - selector: "count(//testcase[@name='testCaption']) = 1 and count(//testcase[@name='testCaption']//failure) = 0"
+      score: 10
+      message: "testCaption succeeded"
+      name: "testCaption"
+    - selector: "count(//testcase[@name='testCaption']) = 1 and count(//testcase[@name='testCaption']//failure) > 0"
+      score: 0
+      message: "testCaption failed"
+      name: "testCaption"
+    - selector: "count(//testcase[@name='testDog']) = 1 and count(//testcase[@name='testDog']//failure) = 0"
+      score: 10
+      message: "testDog succeeded"
+      name: "testDog"
+    - selector: "count(//testcase[@name='testDog']) = 1 and count(//testcase[@name='testDog']//failure) > 0"
+      score: 0
+      message: "testDog failed"
+      name: "testDog"
+    - selector: "count(//testcase[@name='testCat']) = 1 and count(//testcase[@name='testCat']//failure) = 0"
+      score: 10
+      message: "testCat succeeded"
+      name: "testCat"
+    - selector: "count(//testcase[@name='testCat']) = 1 and count(//testcase[@name='testCat']//failure) > 0"
+      score: 0
+      message: "testCat failed"
+      name: "testCat"
+
+# vim: ts=2:sw=2:et

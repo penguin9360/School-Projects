@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"edu.illinois.cs.cs125.mp6.lib","l":"RecognizePhoto"}]

@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"DNA"},{"p":"<Unnamed>","l":"SingleLL"},{"p":"<Unnamed>","l":"SingleLL.Node"},{"p":"<Unnamed>","l":"Tree"}]

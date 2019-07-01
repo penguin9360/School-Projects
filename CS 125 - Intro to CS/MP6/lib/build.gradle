@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+apply plugin: 'edu.illinois.cs.cs125.grade'
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.8.2'
+    testCompile 'org.testng:testng:6.9.6'
+    testRuntime 'net.sourceforge.pro-grade:pro-grade:1.1.1'
+}
+
+checkstyle {
+    toolVersion "8.7"
+    checkstyleTest.enabled = false
+    configFile = new File(rootDir, "config/checkstyle.xml")
+}
+
+test {
+    useTestNG()
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    destinationDir = file('docs')
+    title = "MP6"
+}
+
+processTestResources {
+    exclude '**/*.js'
+}
+
+defaultTasks 'grade'
+
+// vim: ts=4:sw=4:et:ft=groovy

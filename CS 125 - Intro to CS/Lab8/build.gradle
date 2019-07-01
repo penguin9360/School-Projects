@@ -1,0 +1,26 @@
+/*
+ * For more details take a look at the Java Quickstart chapter in the Gradle
+ * user guide available at https://docs.gradle.org/4.0.2/userguide/tutorial_java_projects.html
+ */
+
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+
+repositories {
+    jcenter()
+    maven { url 'https://jitpack.io' }
+}
+
+checkstyle {
+    toolVersion "8.7"
+    checkstyleTest.enabled = false
+    configFile = new File(rootDir, "config/checkstyle.xml")
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    destinationDir = file('docs')
+    title = "Lab8"
+}
+
+// vim: ts=4:sw=4:et:ft=groovy

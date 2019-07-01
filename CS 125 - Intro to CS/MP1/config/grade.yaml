@@ -1,0 +1,81 @@
+name: "MP1"
+version: 1.0.0
+grading:
+  timeout: PT5M
+  run: "./gradlew grade -Pgrade.capture -Pgrade.secure -Pgrade.reporting.file={{ gradeFile }}"
+  ignoreOutput:
+    - "^java.security.policy: error parsing file.*"
+    - "^Unable to initialize policy entry:.*"
+    - "^.*?expected \\[\\;\\], found \\[priority\\]$"
+    - "^WARNING: An illegal reflective access operation has occurred.*"
+    - "^WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass.*"
+    - "^WARNING: Please consider reporting this to the maintainers.*"
+    - "^WARNING: Use --illegal-access=warn to enable warnings.*"
+    - "^WARNING: All illegal access operations will be denied in a future release.*"
+    - "^The TaskInternal.*"
+scoring:
+  max: 100
+  selectors:
+    - checkstyle
+    - test
+vcs:
+  git: true
+students:
+  location: email.txt
+  require: true
+  count: 1
+  suffix: "@illinois.edu"
+files:
+  - "PrintLines"
+  - "Encrypt"
+secure: config/security.policy
+reporting:
+  post: "https://cs125-reporting.cs.illinois.edu/progress"
+checkstyle:
+  name: "checkstyle Tests"
+  missing:
+    score: 0
+    message: "checkstyle failed to run"
+    name: "checkstyle"
+  selectors:
+    - selector: "count(//file/error) = 0"
+      score: 10
+      message: "No checkstyle errors were reported"
+      name: "checkstyle"
+    - selector: "count(//file/error) > 0"
+      score: 0
+      message: "checkstyle errors were reported"
+      name: "checkstyle"
+notes:
+  "Note that the maximum local grade is 90/100. 10 points will be provided
+  during official grading if you have submitted code that earns at least 20
+  points by Tuesday 1/30/2018 at 5PM."
+test:
+  name: "testNG Tests"
+  selectors:
+    - selector: "count(//testsuite[@name='EncryptTest']) = 1 and count(//testsuite[@name='EncryptTest']//failure) = 0"
+      score: 40
+      message: "No test failures in EncryptTest"
+      name: "EncryptTest"
+    - selector: "count(//testsuite[@name='EncryptTest']) = 1 and count(//testsuite[@name='EncryptTest']//failure) > 0"
+      score: 10
+      message: "Test failures in EncryptTest"
+      name: "EncryptTest"
+    - selector: "count(//testsuite[@name='EncryptTest']) = 0"
+      score: 0
+      message: "EncryptTest didn't compile"
+      name: "EncryptTest"
+    - selector: "count(//testsuite[@name='PrintLinesTest']) = 1 and count(//testsuite[@name='PrintLinesTest']//failure) = 0"
+      score: 40
+      message: "No test failures in PrintLinesTest"
+      name: "PrintLinesTest"
+    - selector: "count(//testsuite[@name='PrintLinesTest']) = 1 and count(//testsuite[@name='PrintLinesTest']//failure) > 0"
+      score: 10
+      message: "Test failures in PrintLinesTest"
+      name: "PrintLinesTest"
+    - selector: "count(//testsuite[@name='PrintLinesTest']) = 0"
+      score: 0
+      message: "PrintLinesTest didn't compile"
+      name: "PrintLinesTest"
+
+# vim: ts=2:sw=2:et

@@ -1,0 +1,54 @@
+apply plugin: 'checkstyle'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'org.eclipse.jgit:org.eclipse.jgit:4.10.0.201712302008-r'
+        classpath 'com.github.cs125-illinois:gradle:0.10.6'
+        classpath 'com.android.tools.build:gradle:3.1.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task copyConfigurations(type: Copy) {
+    from 'runConfigurations'
+    into '.idea/runConfigurations'
+}
+allprojects {
+    afterEvaluate {
+        it.tasks.each {
+            if (it != rootProject.tasks.copyConfigurations) {
+                it.finalizedBy rootProject.tasks.copyConfigurations
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+checkstyle {
+    toolVersion "8.7"
+    configFile = new File(rootDir, "config/checkstyle.xml")
+}
+task checkstyleMain (type: Checkstyle) {
+    source 'app/src/main'
+    include '**/*.java'
+    exclude '**/gen/**'
+    exclude '**/R.java'
+    exclude '**/BuildConfig.java'
+    classpath = files()
+}
+
+// vim: ts=4:sw=4:et:ft=groovy

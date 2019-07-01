@@ -1,0 +1,107 @@
+name: "MP2"
+version: 1.0.0
+grading:
+  timeout: PT5M
+  run: "./gradlew grade -Pgrade.capture -Pgrade.secure -Pgrade.reporting.file={{ gradeFile }}"
+  ignoreOutput:
+    - "^java.security.policy: error parsing file.*"
+    - "^Unable to initialize policy entry:.*"
+    - "^.*?expected \\[\\;\\], found \\[priority\\]$"
+    - "^WARNING: An illegal reflective access operation has occurred.*"
+    - "^WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass.*"
+    - "^WARNING: Please consider reporting this to the maintainers.*"
+    - "^WARNING: Use --illegal-access=warn to enable warnings.*"
+    - "^WARNING: All illegal access operations will be denied in a future release.*"
+    - "^The TaskInternal.*"
+scoring:
+  max: 100
+  selectors:
+    - checkstyle
+    - test
+vcs:
+  git: true
+students:
+  location: email.txt
+  require: true
+  count: 1
+  suffix: "@illinois.edu"
+files:
+  - "Anagram"
+  - "CheckPassword"
+  - "StringSplitter"
+  - "TimesTable"
+secure: config/security.policy
+reporting:
+  post: "https://cs125-reporting.cs.illinois.edu/progress"
+checkstyle:
+  name: "checkstyle Tests"
+  missing:
+    score: 0
+    message: "checkstyle failed to run"
+    name: "checkstyle"
+  selectors:
+    - selector: "count(//file/error) = 0"
+      score: 10
+      message: "No checkstyle errors were reported"
+      name: "checkstyle"
+    - selector: "count(//file/error) > 0"
+      score: 0
+      message: "checkstyle errors were reported"
+      name: "checkstyle"
+notes:
+  "Note that the maximum local grade is 90/100. 10 points will be provided
+  during official grading if you have submitted code that earns at least 20
+  points by Wednesday 2/7/2018 at 7PM."
+test:
+  name: "testNG Tests"
+  selectors:
+    - selector: "count(//testsuite[@name='AnagramTest']) = 1 and count(//testsuite[@name='AnagramTest']//failure) = 0"
+      score: 20
+      message: "No test failures in AnagramTest"
+      name: "AnagramTest"
+    - selector: "count(//testsuite[@name='AnagramTest']) = 1 and count(//testsuite[@name='AnagramTest']//failure) > 0"
+      score: 0
+      message: "Test failures in AnagramTest"
+      name: "AnagramTest"
+    - selector: "count(//testsuite[@name='AnagramTest']) = 0"
+      score: 0
+      message: "AnagramTest didn't compile"
+      name: "AnagramTest"
+    - selector: "count(//testsuite[@name='CheckPasswordTest']) = 1 and count(//testsuite[@name='CheckPasswordTest']//failure) = 0"
+      score: 20
+      message: "No test failures in CheckPasswordTest"
+      name: "CheckPasswordTest"
+    - selector: "count(//testsuite[@name='CheckPasswordTest']) = 1 and count(//testsuite[@name='CheckPasswordTest']//failure) > 0"
+      score: 0
+      message: "Test failures in CheckPasswordTest"
+      name: "CheckPasswordTest"
+    - selector: "count(//testsuite[@name='CheckPasswordTest']) = 0"
+      score: 0
+      message: "CheckPasswordTest didn't compile"
+      name: "CheckPasswordTest"
+    - selector: "count(//testsuite[@name='StringSplitterTest']) = 1 and count(//testsuite[@name='StringSplitterTest']//failure) = 0"
+      score: 20
+      message: "No test failures in StringSplitterTest"
+      name: "StringSplitterTest"
+    - selector: "count(//testsuite[@name='StringSplitterTest']) = 1 and count(//testsuite[@name='StringSplitterTest']//failure) > 0"
+      score: 0
+      message: "Test failures in StringSplitterTest"
+      name: "StringSplitterTest"
+    - selector: "count(//testsuite[@name='StringSplitterTest']) = 0"
+      score: 0
+      message: "StringSplitterTest didn't compile"
+      name: "StringSplitterTest"
+    - selector: "count(//testsuite[@name='TimesTableTest']) = 1 and count(//testsuite[@name='TimesTableTest']//failure) = 0"
+      score: 20
+      message: "No test failures in TimesTableTest"
+      name: "TimesTableTest"
+    - selector: "count(//testsuite[@name='TimesTableTest']) = 1 and count(//testsuite[@name='TimesTableTest']//failure) > 0"
+      score: 0
+      message: "Test failures in TimesTableTest"
+      name: "TimesTableTest"
+    - selector: "count(//testsuite[@name='TimesTableTest']) = 0"
+      score: 0
+      message: "TimesTableTest didn't compile"
+      name: "TimesTableTest"
+
+# vim: ts=2:sw=2:et

@@ -1,0 +1,9 @@
+.cell {
+  border: 1px solid lightgrey;
+}
+.square {
+  padding: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

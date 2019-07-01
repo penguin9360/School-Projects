@@ -1,0 +1,64 @@
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+
+repositories {
+    jcenter()
+}
+configurations {
+    shadow
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'org.eclipse.jgit:org.eclipse.jgit:4.10.0.201712302008-r'
+        classpath 'com.github.cs125-illinois:gradle:0.10.3'
+    }
+}
+
+apply plugin: 'edu.illinois.cs.cs125.grade'
+
+dependencies {
+    compile 'io.vertx:vertx-web:3.4.2'
+    shadow 'io.vertx:vertx-web:3.4.2'
+    testCompile 'org.testng:testng:6.9.6'
+    testRuntime 'net.sourceforge.pro-grade:pro-grade:1.1.1'
+}
+
+checkstyle {
+    toolVersion "8.7"
+    checkstyleTest.enabled = false
+    configFile = new File(rootDir, "config/checkstyle.xml")
+}
+
+test {
+    useTestNG()
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+    destinationDir = file('docs')
+    title = "MP3"
+}
+
+processTestResources {
+    exclude '**/*.js'
+}
+
+defaultTasks 'grade'
+
+jar {
+    from {
+        configurations.shadow.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes 'Main-Class': 'WebServer'
+    }
+}
+
+// vim: ts=4:sw=4:et:ft=groovy

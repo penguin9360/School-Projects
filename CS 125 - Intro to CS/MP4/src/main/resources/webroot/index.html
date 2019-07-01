@@ -1,0 +1,251 @@
+<!-- Based on https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+  <!-- Our own small stylesheet -->
+  <link rel="stylesheet" href="index.css">
+
+  <!-- FontAwesome fonts for buttons -->
+  <script src="https://use.fontawesome.com/8ed8bfa954.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- File input at top -->
+    <div class="row mt-3">
+      <div class="col-md-1 col-lg-2"></div>
+      <div class="col-12 col-md-10 col-lg-8 text-center">
+        <p id="instructions" class="lead">
+          Choose an image to get started. PNGs and JPGs definitely work, other
+          formats may also. Then edit it using the controls below.
+        </p>
+        <label class="custom-file" style="width:100%">
+          <input type="file" id="input" class="custom-file-input">
+          <span class="custom-file-control"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Canvas and control area -->
+    <div class="row mt-2">
+      <div class="col-md-1 col-lg-2"></div>
+
+      <!-- Main drawing canvas -->
+      <div class="col-12 col-md-5 col-lg-4 pt-md-3 text-center text-md-right">
+        <canvas id="canvas" width="320" height="240"></canvas>
+      </div>
+
+      <!-- Button grid -->
+      <div class="col-12 col-md-5 col-lg-4 justify-content-center mt-3">
+
+        <!-- Row 1 -->
+        <div class="text-center text-md-left">
+          <button data-action="moreRed" type="button" class="btn btn-danger action" data-toggle="tooltip" data-placement="top" title="Increase Red">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+          </button>
+          <button data-action="lessRed" type="button" class="btn btn-danger action" data-toggle="tooltip" data-placement="top" title="Decrease Red">
+            <i class="fa fa-minus-square" aria-hidden="true"></i>
+          </button>
+          <button data-action="shiftLeft" type="button" class="ml-1 btn action" data-toggle="tooltip" data-placement="top" title="Shift Left">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          </button>
+          <button data-action="rotateLeft" type="button" class="btn action" data-toggle="tooltip" data-placement="top" title="Rotate Left">
+            <i class="fa fa-rotate-left" aria-hidden="true"></i>
+          </button>
+          <button data-action="shrinkVertical" type="button" class="btn action" data-toggle="tooltip" data-placement="top" title="Shrink Vertical">
+            <i class="fa fa-compress fa-rotate-135" aria-hidden="true"></i>
+          </button>
+          <button data-action="greenScreen" type="button" class="btn btn-success action" data-toggle="tooltip" data-placement="top" title="Green Screen">
+            <i class="fa fa-eraser" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="text-center text-md-left mt-1">
+          <button data-action="moreGreen" type="button" class="btn btn-success action" data-toggle="tooltip" data-placement="top" title="Increase Green">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+          </button>
+          <button data-action="lessGreen" type="button" class="btn btn-success action" data-toggle="tooltip" data-placement="top" title="Decrease Green">
+            <i class="fa fa-minus-square" aria-hidden="true"></i>
+          </button>
+          <button data-action="shiftRight" type="button" class="ml-1 btn action" data-toggle="tooltip" data-placement="top" title="Shift Right">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </button>
+          <button data-action="rotateRight" type="button" class="btn action" data-toggle="tooltip" data-placement="top" title="Rotate Right">
+            <i class="fa fa-rotate-right" aria-hidden="true"></i>
+          </button>
+          <button data-action="expandVertical" type="button" class="btn action" data-toggle="tooltip" data-placement="top" title="Expand Vertical">
+            <i class="fa fa-expand fa-rotate-135" aria-hidden="true"></i>
+          </button>
+          <button data-action="mystery" type="button" class="btn action btn-warning" data-toggle="tooltip" data-placement="top" title="Mystery Effect!">
+            <i class="fa fa-question" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="text-center text-md-left mt-1">
+          <button data-action="moreBlue" type="button" class="btn btn-primary action" data-toggle="tooltip" data-placement="top" title="Increase Blue">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+          </button>
+          <button data-action="lessBlue" type="button" class="btn btn-primary action" data-toggle="tooltip" data-placement="top" title="Decrease Blue">
+            <i class="fa fa-minus-square" aria-hidden="true"></i>
+          </button>
+          <button data-action="shiftUp" type="button" class="ml-1 btn action" data-toggle="tooltip" data-placement="top" title="Shift Up">
+            <i class="fa fa-arrow-up" aria-hidden="true"></i>
+          </button>
+          <button data-action="flipVertical" type="button" class="btn action" data-toggle="tooltip" data-placement="top" title="Flip Vertical">
+            <i class="fa fa-exchange fa-rotate-90" aria-hidden="true"></i>
+          </button>
+          <button data-action="shrinkHorizontal" type="button" class="btn action" data-toggle="tooltip" data-placement="top" title="Shrink Horizontal">
+            <i class="fa fa-compress fa-rotate-45" aria-hidden="true"></i>
+          </button>
+          <button id="reset" type="button" class="btn btn-dark action" data-toggle="tooltip" data-placement="top" title="Reset Image">
+            <i class="fa fa-refresh" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="text-center text-md-left mt-1">
+          <button data-action="lessAlpha" type="button" class="btn btn-light action" data-toggle="tooltip" data-placement="top" title="Increase Transparency">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+          </button>
+          <button data-action="moreAlpha" type="button" class="btn btn-light action" data-toggle="tooltip" data-placement="top" title="Decrease Transparency">
+            <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+          </button>
+          <button data-action="shiftDown" type="button" class="ml-1 btn action" data-toggle="tooltip" data-placement="top" title="Shift Down">
+            <i class="fa fa-arrow-down" aria-hidden="true"></i>
+          </button>
+          <button data-action="flipHorizontal" type="button" class="btn action" data-toggle="tooltip" data-placement="top" title="Flip Horizontal">
+            <i class="fa fa-exchange" aria-hidden="true"></i>
+          </button>
+          <button data-action="expandHorizontal" type="button" class="btn action" data-toggle="tooltip" data-placement="top" title="Expand Horizontal">
+            <i class="fa fa-expand fa-rotate-45" aria-hidden="true"></i>
+          </button>
+          <button id="delete" type="button" class="btn btn-dark action" data-toggle="tooltip" data-placement="top" title="Delete Image">
+            <i class="fa fa-remove" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="text-center text-md-left mt-3">
+          <img data-background="img/Siebel-320x240.png" class="background" data-toggle="tooltip" data-placement="top" title="Set Siebel Background" src="img/Siebel-32x32.png" style="margin-left: 98px;">
+          <img data-background="img/TajMahal-320x240.png" class="background" data-toggle="tooltip" data-placement="top" title="Set Taj Mahal Background" src="img/TajMahal-32x32.png" />
+          <img data-background="img/BonIver-320x240.png" class="background" data-toggle="tooltip" data-placement="top" title="Set Bon Iver Background" src="img/BonIver-32x32.png" />
+          <img data-background="img/Datacenter-320x240.png" class="background" data-toggle="tooltip" data-placement="top" title="Set Datacenter Background" src="img/Datacenter-32x32.png" />
+        </div>
+
+        <!-- Row 6 -->
+        <div class="text-center text-md-left mt-1">
+          <img data-background="img/MemorialStadium-320x240.png" class="background" data-toggle="tooltip" data-placement="top" title="Set Memorial Stadium Background" src="img/MemorialStadium-32x32.png" style="margin-left: 98px;" />
+          <img data-background="img/Facebook-320x240.png" class="background" data-toggle="tooltip" data-placement="top" title="Set Facebook Background" src="img/Facebook-32x32.png" />
+          <img data-background="img/Cornfield-320x240.png" class="background" data-toggle="tooltip" data-placement="top" title="Set Cornfield Background" src="img/Cornfield-32x32.png" />
+          <button data-background="" type="button" class="btn btn-light background" data-toggle="tooltip" data-placement="top" title="Clear Background">
+            <i class="fa fa-remove" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Various modal dialogs -->
+    <div class="modal fade" id="badBrowserModal" tabindex="-1" role="dialog" aria-labelledby="badBrowserModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="badBrowserModalLabel">Old Browser Detected</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Your browser doesn't seem to support the features required to use this demo. Please try upgrading to a recent version of a good browser&mdash;we suggest Chrome or Firefox.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="noFileModal" tabindex="-1" role="dialog" aria-labelledby="noFileModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="noFileModalLabel">Pick A File!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Please pick a valid image file using the file picker.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="badImageModal" tabindex="-1" role="dialog" aria-labelledby="badImageModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="badImageModalLabel">That's Not An Image!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>The file you chose is either not an image or has bad dimensions. Please try a valid image file.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="deadServerModal" tabindex="-1" role="dialog" aria-labelledby="deadServerModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deadServerModalLabel">Can't Contact Server</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Couldn't contact your transformation server. Did it crash?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JavaScript dependencies -->
+    <!-- Note that we need the non-slim jQuery to be able to issue post requests. -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+    <!-- Image manipulation library -->
+    <script src="index.js"></script>
+</body>
+
+</html>
+
+<!--
+vim: ts=2:sw=2:et
+-->

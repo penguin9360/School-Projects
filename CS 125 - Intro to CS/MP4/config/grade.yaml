@@ -1,0 +1,107 @@
+name: "MP4"
+version: 1.0.0
+grading:
+  timeout: PT5M
+  run: "./gradlew grade -Pgrade.capture -Pgrade.secure -Pgrade.reporting.file={{ gradeFile }}"
+  ignoreOutput:
+    - "^java.security.policy: error parsing file.*"
+    - "^Unable to initialize policy entry:.*"
+    - "^.*?expected \\[\\;\\], found \\[priority\\]$"
+    - "^WARNING: An illegal reflective access operation has occurred.*"
+    - "^WARNING: Illegal reflective access by org.codehaus.groovy.reflection.CachedClass.*"
+    - "^WARNING: Please consider reporting this to the maintainers.*"
+    - "^WARNING: Use --illegal-access=warn to enable warnings.*"
+    - "^WARNING: All illegal access operations will be denied in a future release.*"
+    - "^The TaskInternal.*"
+scoring:
+  max: 100
+  selectors:
+    - checkstyle
+    - test
+vcs:
+  git: true
+students:
+  location: email.txt
+  require: true
+  count: 1
+  suffix: "@illinois.edu"
+files:
+  - compile:
+    - "Transform.java"
+    - "RGBAPixel.java"
+    test: Transform
+secure: config/security.policy
+reporting:
+  post: "https://cs125-reporting.cs.illinois.edu/progress"
+notes:
+  "Note that the maximum local grade is 90/100. 10 points will be provided
+  during official grading if you have committed code that earns at least 50
+  points by Monday 3/5/2018 at 5PM."
+checkstyle:
+  name: "checkstyle Tests"
+  missing:
+    score: 0
+    message: "checkstyle failed to run"
+    name: "checkstyle"
+  selectors:
+    - selector: "count(//file/error) = 0"
+      score: 10
+      message: "No checkstyle errors were reported"
+      name: "checkstyle"
+    - selector: "count(//file/error) > 0"
+      score: 0
+      message: "checkstyle errors were reported"
+      name: "checkstyle"
+test:
+  name: "testNG Tests"
+  selectors:
+    - selector: "count(//testcase[@name='testPositionShifts']) = 1 and count(//testcase[@name='testPositionShifts']//failure) > 0"
+      score: 0
+      message: "testPositionShifts failed"
+      name: "testPositionShifts"
+    - selector: "count(//testcase[@name='testPositionShifts']) = 1 and count(//testcase[@name='testPositionShifts']//failure) = 0"
+      score: 20
+      message: "testPositionShifts succeeded"
+      name: "testPositionShifts"
+    - selector: "count(//testcase[@name='testRotateAndFlip']) = 1 and count(//testcase[@name='testRotateAndFlip']//failure) > 0"
+      score: 0
+      message: "testRotateAndFlip failed"
+      name: "testRotateAndFlip"
+    - selector: "count(//testcase[@name='testRotateAndFlip']) = 1 and count(//testcase[@name='testRotateAndFlip']//failure) = 0"
+      score: 20
+      message: "testRotateAndFlip succeeded"
+      name: "testRotateAndFlip"
+    - selector: "count(//testcase[@name='testColorShift']) = 1 and count(//testcase[@name='testColorShift']//failure) > 0"
+      score: 0
+      message: "testColorShift failed"
+      name: "testColorShift"
+    - selector: "count(//testcase[@name='testColorShift']) = 1 and count(//testcase[@name='testColorShift']//failure) = 0"
+      score: 10
+      message: "testColorShift succeeded"
+      name: "testColorShift"
+    - selector: "count(//testcase[@name='testExpand']) = 1 and count(//testcase[@name='testExpand']//failure) > 0"
+      score: 0
+      message: "testExpand failed"
+      name: "testExpand"
+    - selector: "count(//testcase[@name='testExpand']) = 1 and count(//testcase[@name='testExpand']//failure) = 0"
+      score: 15
+      message: "testExpand succeeded"
+      name: "testExpand"
+    - selector: "count(//testcase[@name='testGreenScreen']) = 1 and count(//testcase[@name='testGreenScreen']//failure) > 0"
+      score: 0
+      message: "testGreenScreen failed"
+      name: "testGreenScreen"
+    - selector: "count(//testcase[@name='testGreenScreen']) = 1 and count(//testcase[@name='testGreenScreen']//failure) = 0"
+      score: 10
+      message: "testGreenScreen succeeded"
+      name: "testGreenScreen"
+    - selector: "count(//testcase[@name='testMystery']) = 1 and count(//testcase[@name='testMystery']//failure) > 0"
+      score: 0
+      message: "testMystery failed"
+      name: "testMystery"
+    - selector: "count(//testcase[@name='testMystery']) = 1 and count(//testcase[@name='testMystery']//failure) = 0"
+      score: 5
+      message: "testMystery succeeded"
+      name: "testMystery"
+
+# vim: ts=2:sw=2:et

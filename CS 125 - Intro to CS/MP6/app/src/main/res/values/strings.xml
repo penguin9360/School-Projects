@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Recognize Photo</string>
+
+    <string name="current_image">Current Image</string>
+    <string name="open_file">Open File</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="rotate_left">Rotate Left</string>
+    <string name="process_image">Process Image</string>
+    <string name="download_file">Download File</string>
+    <string name="is_a_dog">Is A Dog</string>
+</resources>
