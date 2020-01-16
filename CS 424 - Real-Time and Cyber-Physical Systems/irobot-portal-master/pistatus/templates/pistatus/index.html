@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS424 Raspberry Pi Portal</title>
+</head>
+<body>
+<h1>CS424 Raspberry Pi Portal</h1>
+    {% if pis %}
+    <table>
+        <tr>
+            <th>Hostname</th>
+            <th>Remote IP</th>
+            <th>Publicly Routable</th>
+            <th>Wireless IP</th>
+            <th>Wired IP</th>
+            <th>Last Ping (UTC)</th>
+        </tr>
+            {% for p in pis %}
+            <tr>
+                <td>{{ p.host_name }}</td>
+                <td>{{ p.remote_address }}</td>
+                <td>{{ p.public_routable }}</td>
+                <td>{{ p.wlan_address }}</td>
+                <td>{{ p.lan_address }}</td>
+                <td>{{ p.last_ping }}</td>
+            </tr>
+            {% endfor %}
+    </table>
+    {% else %}
+        <p>No Raspberry Pi is currently active</p>
+    {% endif %}
+</body>
+</html>

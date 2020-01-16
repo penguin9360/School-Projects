@@ -1,0 +1,1 @@
+*/2 * * * * curl -X POST -F "host=`hostname`" -F "serial=`cat /proc/cpuinfo | grep Serial | cut -d ' ' -f 2`" -F "ip=`/sbin/ifconfig`" -s URL_TO_BE_DECIDED
