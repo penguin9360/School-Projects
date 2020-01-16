@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="iTrust:war">
+    <output-path>$PROJECT_DIR$/iTrust/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>iTrust</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="iTrust-21.0.01.war">
+      <element id="artifact" artifact-name="iTrust:war exploded" />
+    </root>
+  </artifact>
+</component>

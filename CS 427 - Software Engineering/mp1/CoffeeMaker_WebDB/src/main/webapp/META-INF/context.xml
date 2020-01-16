@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the Tomcat Context Setup File 
+("Context" = "this web application") -->
+<Context>
+	<!-- This configures the "Production Instance" of our connection pool. 
+		 Change the following when you are developing:
+		 
+		 Username:  (For local databases in the lab, probably: root)
+		 Password:  (db password for local databases in the lab, probably: root)
+		 URL: 	    jdbc:mysql://<server name>:<port number>/<database name>?createDatabaseIfNotExist=true
+		 			+ Use "localhost" for a local database or the URL provided by the TA, depending on which server you're using
+		 			+ Change the database name to the correct name (depending on which server you're using)
+		 			+ Do NOT change or remove the "?createDatabaseIfNotExist=true"
+		
+		Nothing else here needs to change during development.
+		Do NOT change the "name=jdbc/coffeemaker"	
+		
+		IMPORTANT: Add the project to the Tomcat server, start the server, then load 
+		   "http://localhost:8080/CoffeeMaker_WebDB/" in your web browser
+		   before beginning this tutorial to ensure the database is properly created.
+		-->
+	<Resource
+		username="cs427" 
+		password="mypassword"
+		url="jdbc:mysql://localhost:3306/tutorials?createDatabaseIfNotExist=true"		
+		name="jdbc/coffeemaker"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver"
+		maxActive="15" 
+		maxIdle="4"
+		validationQuery="Show Databases"/>
+		
+    <!-- Authentication Realms uses the above resource to handle credentials
+    	 Do not edit. -->
+	<Realm
+		className="org.apache.catalina.realm.DataSourceRealm" 
+		localDataSource="true"
+		debug="99"
+	    dataSourceName="jdbc/coffeemaker"
+		userTable="Users"
+		userNameCol="MID"
+		userCredCol="Password"
+		userRoleTable="Users"
+		roleNameCol="Role" />
+</Context>

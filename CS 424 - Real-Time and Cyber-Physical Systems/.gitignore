@@ -1,0 +1,10 @@
+*.o
+*.swp
+mp2
+robotest
+data/
+img/
+
+test
+test_navigator
+.vimrc
